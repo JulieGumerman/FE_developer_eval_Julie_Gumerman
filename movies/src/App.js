@@ -8,6 +8,7 @@ import axios from 'axios';
 function App() {
 
   const [movies, setMovies] = useState([])
+  const [searchByThisMovie, setSearchByThisMovie] = useState("")
 
   const getMovies = () => {
     //axios.get("https://api.themoviedb.org/3/movie/550?api_key=727eb794d2d99f0338a6306c81041acc")
@@ -17,6 +18,19 @@ function App() {
       })
       .catch(err => console.log(err))
   }
+
+  const getNowPlaying = () => {
+    return
+  }
+
+  const getTopRated = () => {
+    return
+  }
+
+  const getByPopularity = () => {
+    return
+  }
+ 
 
   const searchByTitle = (title) => {
     /*THIS FUNCTION IS GOOD TO GO!!!*/
@@ -29,12 +43,8 @@ function App() {
       .catch(err => console.log(err))
   }
 
-  
-  console.log("MOVIES", movies)
+//searchByTitle("Star Wars")
 
-  useEffect(() => {
-    searchByTitle("Star Wars")
-  }, [])
 
   return (
     <div className="content-wrapper">
