@@ -12,13 +12,16 @@ function App() {
 
   const getMovies = () => {
     //axios.get("https://api.themoviedb.org/3/movie/550?api_key=727eb794d2d99f0338a6306c81041acc")
-    axios.get("https://api.themoviedb.org/3/search/movie?api_key=727eb794d2d99f0338a6306c81041acc&query=Jack+Reacher")
+    axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc")
       .then(response => {
-        console.log(response)
+        console.log("GET MOVIES???", response)
       })
       .catch(err => console.log(err))
   }
 
+    useEffect(() => {
+      getMovies()
+    })
   const getNowPlaying = () => {
     return
   }
@@ -49,7 +52,7 @@ function App() {
   return (
     <div className="content-wrapper">
       <h1>Movies</h1>
-      <form onSubmit={searchByTitle()}>
+      <form>
         <input 
           placeholder="search by title"
         />
