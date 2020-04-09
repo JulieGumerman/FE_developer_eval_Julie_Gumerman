@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.scss';
 import axios from 'axios';
+import MovieCard from "./Components/MovieCard";
 
 
 
@@ -8,20 +9,22 @@ import axios from 'axios';
 function App() {
 
   const [movies, setMovies] = useState([])
-  const [searchByThisMovie, setSearchByThisMovie] = useState("")
+  const [searchByThisMovie, setSearchByThisMovie] = useState({title: ""})
 
   const getMovies = () => {
+    //this commented-out axios call is a search-by-id
     //axios.get("https://api.themoviedb.org/3/movie/550?api_key=727eb794d2d99f0338a6306c81041acc")
     axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc")
       .then(response => {
         console.log("GET MOVIES???", response)
+        setMovies(response.data.results)
       })
       .catch(err => console.log(err))
   }
 
-    useEffect(() => {
-      getMovies()
-    })
+    // useEffect(() => {
+    //   getMovies()
+    // })
   const getNowPlaying = () => {
     return
   }
@@ -46,18 +49,44 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  const handleChange = e => {
+    const {name, value} = e.target;
+    setSearchByThisMovie({[name]: value})
+    console.log("SEARCHBYTHISMOVIE", searchByThisMovie)
+    searchByTitle(searchByThisMovie.title)
+  }
+
 //searchByTitle("Star Wars")
 
 
   return (
     <div className="content-wrapper">
       <h1>Movies</h1>
-      <form>
+        <div className="filter-search-bar">
+        <button>Search by popularity</button>
+        <button>Now Playing?</button>
+        <button>Top-rated</button>
         <input 
           placeholder="search by title"
+          name="title"
+          value={searchByThisMovie.title}
+          onChange={handleChange}
         />
-        <button>Search!</button>
-      </form>
+        <button
+          onClick={getMovies}
+        >Clear search/filter</button>
+      </div>  
+      <div className="movie-card-holder">
+        {movies.map(movie => {
+          return (          
+            <MovieCard 
+              key={movie.id}
+              movie={movie}
+            />
+          )
+
+        })}
+      </div>
     </div>
   );
 }
