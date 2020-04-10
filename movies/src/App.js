@@ -14,7 +14,7 @@ function App() {
     <div>
       <h1>Movies</h1>
       <Route exact path="/" component={Movies}/>
-      <Route path="/sanity" component={MovieDetails} />
+      <Route path={`/:id`} component={MovieDetails} />
     </div>
   )
 
