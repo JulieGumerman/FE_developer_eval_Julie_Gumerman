@@ -1,94 +1,104 @@
 import React, {useEffect, useState} from 'react';
 import './App.scss';
-import axios from 'axios';
-import MovieCard from "./Components/MovieCard";
-
+//import axios from 'axios';
+//import MovieCard from "./Components/MovieCard";
+import Movies from "./Components/Movies"
+import { Route } from "react-router-dom";
+import MovieDetails from "./Components/MovieDetails"
 
 
 
 function App() {
 
-  const [movies, setMovies] = useState([])
-  const [searchByThisMovie, setSearchByThisMovie] = useState({title: ""})
+  return (
+    <div>
+      <h1>Movies</h1>
+      <Route exact path="/" component={Movies}/>
+      <Route path="/sanity" component={MovieDetails} />
+    </div>
+  )
 
-  const getMovies = () => {
-    //this commented-out axios call is a search-by-id
-    //axios.get("https://api.themoviedb.org/3/movie/550?api_key=727eb794d2d99f0338a6306c81041acc")
-    axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc")
-      .then(response => {
-        console.log("GET MOVIES???", response)
-        setMovies(response.data.results)
-      })
-      .catch(err => console.log(err))
-  }
+//   const [movies, setMovies] = useState([])
+//   const [searchByThisMovie, setSearchByThisMovie] = useState({title: ""})
 
-    // useEffect(() => {
-    //   getMovies()
-    // })
-  const getNowPlaying = () => {
-    return
-  }
+//   const getMovies = () => {
+//     //this commented-out axios call is a search-by-id
+//     //axios.get("https://api.themoviedb.org/3/movie/550?api_key=727eb794d2d99f0338a6306c81041acc")
+//     axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc")
+//       .then(response => {
+//         console.log("GET MOVIES???", response)
+//         setMovies(response.data.results)
+//       })
+//       .catch(err => console.log(err))
+//   }
 
-  const getTopRated = () => {
-    return
-  }
+//     // useEffect(() => {
+//     //   getMovies()
+//     // })
+//   const getNowPlaying = () => {
+//     return
+//   }
 
-  const getByPopularity = () => {
-    return
-  }
+//   const getTopRated = () => {
+//     return
+//   }
+
+//   const getByPopularity = () => {
+//     return
+//   }
  
 
-  const searchByTitle = (title) => {
-    /*THIS FUNCTION IS GOOD TO GO!!!*/
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=727eb794d2d99f0338a6306c81041acc&query=${title}`)
-      .then(response => {
-        console.log("SEARCH BY TITLE", response.data.results);
-        setMovies(response.data.results)
+//   const searchByTitle = (title) => {
+//     /*THIS FUNCTION IS GOOD TO GO!!!*/
+//     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=727eb794d2d99f0338a6306c81041acc&query=${title}`)
+//       .then(response => {
+//         console.log("SEARCH BY TITLE", response.data.results);
+//         setMovies(response.data.results)
       
-      })
-      .catch(err => console.log(err))
-  }
+//       })
+//       .catch(err => console.log(err))
+//   }
 
-  const handleChange = e => {
-    const {name, value} = e.target;
-    setSearchByThisMovie({[name]: value})
-    console.log("SEARCHBYTHISMOVIE", searchByThisMovie)
-    searchByTitle(searchByThisMovie.title)
-  }
+//   const handleChange = e => {
+//     const {name, value} = e.target;
+//     setSearchByThisMovie({[name]: value})
+//     console.log("SEARCHBYTHISMOVIE", searchByThisMovie)
+//     searchByTitle(searchByThisMovie.title)
+//   }
 
-//searchByTitle("Star Wars")
+// //searchByTitle("Star Wars")
 
 
-  return (
-    <div className="content-wrapper">
-      <h1>Movies</h1>
-        <div className="filter-search-bar">
-        <button>Search by popularity</button>
-        <button>Now Playing?</button>
-        <button>Top-rated</button>
-        <input 
-          placeholder="search by title"
-          name="title"
-          value={searchByThisMovie.title}
-          onChange={handleChange}
-        />
-        <button
-          onClick={getMovies}
-        >Clear search/filter</button>
-      </div>  
-      <div className="movie-card-holder">
-        {movies.map(movie => {
-          return (          
-            <MovieCard 
-              key={movie.id}
-              movie={movie}
-            />
-          )
+  //return (
+    // <div className="content-wrapper">
+    //   <h1>Movies</h1>
+    //     <div className="filter-search-bar">
+    //     <button>Search by popularity</button>
+    //     <button>Now Playing?</button>
+    //     <button>Top-rated</button>
+    //     <input 
+    //       placeholder="search by title"
+    //       name="title"
+    //       value={searchByThisMovie.title}
+    //       onChange={handleChange}
+    //     />
+    //     <button
+    //       onClick={getMovies}
+    //     >Clear search/filter</button>
+    //   </div>  
+    //   <div className="movie-card-holder">
+    //     {movies.map(movie => {
+    //       return (          
+    //         <MovieCard 
+    //           key={movie.id}
+    //           movie={movie}
+    //         />
+    //       )
 
-        })}
-      </div>
-    </div>
-  );
+    //     })}
+    //   </div>
+    // </div>
+  //);
 }
 
 export default App;
