@@ -22,7 +22,10 @@ const Movies = () => {
       // })
     const getNowPlaying = () => {
       axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc&language=en-US&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1")
-        .then(response => console.log("recent movies", response))
+        .then(response => {
+          console.log("recent movies", response)
+          setMovies(response.data.results)
+        })
         .catch(err => console.log("sucks bro"))
     }
   
