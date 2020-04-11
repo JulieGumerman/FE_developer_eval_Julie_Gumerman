@@ -21,11 +21,19 @@ const Movies = () => {
       //   getMovies()
       // })
     const getNowPlaying = () => {
-      return
+      axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc&language=en-US&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1")
+        .then(response => console.log("recent movies", response))
+        .catch(err => console.log("sucks bro"))
     }
   
     const getTopRated = () => {
-      return
+      axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc&language=en-US&sort_by=vote_average.asc&include_adult=false")
+        .then(response => {
+          console.log("TOP RATED MOVIES!!!", response);
+          setMovies(response.data.results)
+        })
+        .catch(err => console.log("WELL, THAT SUCKS"))
+
     }
   
     const getByPopularity = () => {
@@ -64,10 +72,14 @@ const Movies = () => {
               onClick={getByPopularity}
             >
               Search by popularity</button>
-            <button>
+            <button
+              onClick={getNowPlaying}
+            >
               Now Playing?
-            </button>
-            <button>Top-rated</button>
+            </button >
+            <button
+              onClick={getTopRated}
+              >Top-rated</button>
           </div>
           <div>
             <input 

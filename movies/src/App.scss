@@ -1,6 +1,7 @@
 /******************Variables***********************/
 $background: #DEB887;
 $border-radius: 10px;
+$card-background: #F0F8FF;
 
 
 /****************Mixins********************/
@@ -78,40 +79,78 @@ $border-radius: 10px;
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
-  background-color: #DEB887;
-  height: 100vh;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
-  @media screen and (min-width: 720px) {
-    justify-content: space-around;
-    flex-direction: row;
-  }
+  // @media screen and (min-width: 720px) {
+    
+  //   flex-direction: row;
+
+  // }
   .movie-card {
     border: 2px black solid;
     border-radius: 10px;
     margin: 30px;
-    width: 400px;
-    height: 300px;
+    width: 200px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: $card-background;
+    padding: 20px;
 
     button {
       @include sweet-sweet-button-stylez();
+      margin-bottom: 30px;
 
+    }
+
+    img {
+      //height: 70%;
+      margin-top: 20px;
+      width: 150px;
+      //height: 200px;
+      border-radius: $border-radius;
     }
   }
 }
 /******************Movie Details******************/
 
 .movie-wrapper {
+  //padding: 20px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (min-width: 1200px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 720px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 90%;
+  }
+
+  img {
+    margin-top: 30px;
+    border-radius: $border-radius;
+    width: 40%;
+
+  }
 
   button {
     @include sweet-sweet-button-stylez();
-
-
+    margin-bottom: 30px;
   }
+
+
 }
 
 /****************Miscellaneous************/
