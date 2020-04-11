@@ -26,7 +26,14 @@ const MovieDetails = ({match}) => {
             <div className="movie-wrapper">
                 <h1>{movie.title}</h1>
                 <p>{movie.overview}</p>
-                <button><Link to={"/"}>Return to movies</Link></button>
+                <button>
+                    <Link 
+                        to={"/"}
+                        className="link"
+                    >
+                        Return to movies
+                    </Link>
+                    </button>
             </div>
         </div>
     );

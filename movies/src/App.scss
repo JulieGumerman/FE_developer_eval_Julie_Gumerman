@@ -90,6 +90,12 @@ $border-radius: 10px;
     border: 2px black solid;
     border-radius: 10px;
     margin: 30px;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     button {
       @include sweet-sweet-button-stylez();
@@ -103,6 +109,8 @@ $border-radius: 10px;
 
   button {
     @include sweet-sweet-button-stylez();
+
+
   }
 }
 

@@ -12,7 +12,6 @@ const Movies = () => {
       //axios.get("https://api.themoviedb.org/3/movie/550?api_key=727eb794d2d99f0338a6306c81041acc")
       axios.get("https://api.themoviedb.org/3/discover/movie?api_key=727eb794d2d99f0338a6306c81041acc")
         .then(response => {
-          console.log("GET MOVIES???", response)
           setMovies(response.data.results)
         })
         .catch(err => console.log(err))
@@ -30,9 +29,12 @@ const Movies = () => {
     }
   
     const getByPopularity = () => {
-      return
+      getMovies();
+      let byPopularity = movies.sort((a, b) => b.popularity - a.popularity)
+      //setMovies(byPopularity)
+      console.log("GET BY POPULARITY!!!", byPopularity)
+      setMovies(byPopularity)
     }
-   
   
     const searchByTitle = (title) => {
       /*THIS FUNCTION IS GOOD TO GO!!!*/
@@ -58,8 +60,13 @@ const Movies = () => {
           <div className="filter-search-bar">
             <h3>Find a movie here.</h3>
           <div>
-            <button>Search by popularity</button>
-            <button>Now Playing?</button>
+            <button
+              onClick={getByPopularity}
+            >
+              Search by popularity</button>
+            <button>
+              Now Playing?
+            </button>
             <button>Top-rated</button>
           </div>
           <div>
