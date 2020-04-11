@@ -1,13 +1,53 @@
+/******************Variables***********************/
+$background: #DEB887;
+
+
+
+
+
+
+/********************Body*************************/
+.app {
+  background: $background;
+  height: 100vh;
+}
+
 .content-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: $background;
+}
+
+.header {
+  background-color: black;
+  color: white;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 
 .filter-search-bar {
   padding-bottom: 30px;
+  background: #A0522D;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  button {
+    color: white;
+    background: black;
+    margin: 10px;
+    border: none;
+  }
 }
 
 .movie-card-holder {
@@ -15,6 +55,8 @@
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  background-color: #DEB887;
+  height: 100vh;
 
   @media screen and (min-width: 720px) {
     justify-content: space-around;

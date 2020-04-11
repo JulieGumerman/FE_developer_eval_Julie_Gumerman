@@ -4,15 +4,16 @@ import './App.scss';
 //import MovieCard from "./Components/MovieCard";
 import Movies from "./Components/Movies"
 import { Route } from "react-router-dom";
-import MovieDetails from "./Components/MovieDetails"
+import MovieDetails from "./Components/MovieDetails";
+import AppHeader from "./Components/AppHeader";
 
 
 
 function App() {
 
   return (
-    <div>
-      <h1>Movies</h1>
+    <div className="app">
+      <AppHeader />
       <Route exact path="/" component={Movies}/>
       <Route path={`/:id`} component={MovieDetails} />
     </div>

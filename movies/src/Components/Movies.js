@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react";
 import axios from "axios";
-import MovieCard from "./MovieCard"
+import MovieCard from "./MovieCard";
 
 const Movies = () => {
 
@@ -56,18 +56,22 @@ const Movies = () => {
     return (
         <div className="content-wrapper">
           <div className="filter-search-bar">
-          <button>Search by popularity</button>
-          <button>Now Playing?</button>
-          <button>Top-rated</button>
-          <input 
-            placeholder="search by title"
-            name="title"
-            value={searchByThisMovie.title}
-            onChange={handleChange}
-          />
-          <button
-            onClick={getMovies}
-          >Clear search/filter</button>
+          <div>
+            <button>Search by popularity</button>
+            <button>Now Playing?</button>
+            <button>Top-rated</button>
+          </div>
+          <div>
+            <input 
+              placeholder="search by title"
+              name="title"
+              value={searchByThisMovie.title}
+              onChange={handleChange}
+            />
+            <button
+              onClick={getMovies}
+            >Clear search/filter</button>
+          </div>
         </div>  
         <div className="movie-card-holder">
           {movies.map(movie => {

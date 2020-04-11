@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const MovieDetails = ({match}) => {
     const [movie, setMovie] = useState({})
@@ -22,10 +22,12 @@ const MovieDetails = ({match}) => {
 
     console.log("MOVIE DATA!!!", movie)
     return (
-        <div>
-            <h1>{movie.title}</h1>
-            <p>{movie.overview}</p>
-            <button><Link to={"/"}>Return to movies</Link></button>
+        <div className="content-wrapper">
+            <div>
+                <h1>{movie.title}</h1>
+                <p>{movie.overview}</p>
+                <button><Link to={"/"}>Return to movies</Link></button>
+            </div>
         </div>
     );
 }
