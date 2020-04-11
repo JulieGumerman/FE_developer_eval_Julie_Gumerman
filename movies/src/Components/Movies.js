@@ -56,6 +56,7 @@ const Movies = () => {
     return (
         <div className="content-wrapper">
           <div className="filter-search-bar">
+            <h3>Find a movie here.</h3>
           <div>
             <button>Search by popularity</button>
             <button>Now Playing?</button>

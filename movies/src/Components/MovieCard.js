@@ -7,7 +7,7 @@ const MovieCard = ({movie}) => {
             <img src={movie.poster_path}/>
             <h3>{movie.title}</h3>
             <button>
-                <Link to={`/${movie.id}`}>See details</Link>
+                <Link className="link" to={`/${movie.id}`}>See details</Link>
             </button>
 
         </div>

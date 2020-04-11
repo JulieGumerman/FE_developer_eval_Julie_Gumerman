@@ -23,7 +23,7 @@ const MovieDetails = ({match}) => {
     console.log("MOVIE DATA!!!", movie)
     return (
         <div className="content-wrapper">
-            <div>
+            <div className="movie-wrapper">
                 <h1>{movie.title}</h1>
                 <p>{movie.overview}</p>
                 <button><Link to={"/"}>Return to movies</Link></button>
